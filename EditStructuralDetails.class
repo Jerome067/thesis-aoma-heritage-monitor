@@ -1,0 +1,128 @@
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Font;
+import java.awt.LayoutManager;
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.border.Border;
+
+public class EditStructuralDetails extends JFrame {
+   public EditStructuralDetails() {
+      this.setTitle("AOMA-Heritage Monitor");
+      this.setDefaultCloseOperation(2);
+      this.setSize(600, 650);
+      this.setLocationRelativeTo((Component)null);
+      this.setLayout((LayoutManager)null);
+      JLabel var1 = new JLabel("Edit Structural Details");
+      var1.setFont(new Font("Arial", 1, 20));
+      var1.setBounds(20, 20, 300, 30);
+      this.add(var1);
+      byte var2 = 40;
+      short var3 = 220;
+      byte var4 = 70;
+      byte var5 = 45;
+      short var6 = 320;
+      short var7 = 180;
+      byte var8 = 30;
+      this.addLabel("Building Name:", var2, var4, var7, var8);
+      JTextField var9 = new JTextField("San Diego de Alcala Parish Church");
+      this.setupTextField(var9, var3, var4, var6, var8);
+      this.add(var9);
+      this.addLabel("Date Constructed:", var2, var4 + var5, var7, var8);
+      JTextField var10 = new JTextField("1697");
+      this.setupTextField(var10, var3, var4 + var5, var6, var8);
+      this.add(var10);
+      JButton var11 = new JButton("\ud83d\udcc5");
+      var11.setBounds(var3 + var6 + 5, var4 + var5, 30, 30);
+      this.add(var11);
+      this.addLabel("Materials Used:", var2, var4 + var5 * 2, var7, var8);
+      JTextField var12 = new JTextField("Wood, Brick");
+      this.setupTextField(var12, var3, var4 + var5 * 2, var6, var8);
+      this.add(var12);
+      this.addLabel("Conservation Status:", var2, var4 + var5 * 3, var7, var8);
+      JTextField var13 = new JTextField("National Heritage");
+      this.setupTextField(var13, var3, var4 + var5 * 3, var6, var8);
+      this.add(var13);
+      this.addLabel("Address:", var2, var4 + var5 * 4, var7, var8);
+      JTextField var14 = new JTextField("1444 Marcelo H. Del Pilar St, Pulo, Poblacion");
+      this.setupTextField(var14, var3, var4 + var5 * 4, var6, var8);
+      this.add(var14);
+      this.addLabel("Function:", var2, var4 + var5 * 5, var7, var8);
+      JTextField var15 = new JTextField("Church");
+      this.setupTextField(var15, var3, var4 + var5 * 5, var6, var8);
+      this.add(var15);
+      this.addLabel("Description:", var2, var4 + var5 * 6, var7, var8);
+      JTextArea var16 = new JTextArea("San Diego de Alcala Parish Church, colloquially known as Polo Church, is a Roman Catholic church in Valenzuela...");
+      var16.setFont(new Font("Arial", 0, 12));
+      var16.setLineWrap(true);
+      var16.setWrapStyleWord(true);
+      JScrollPane var17 = new JScrollPane(var16);
+      var17.setBounds(var3, var4 + var5 * 6, var6, 100);
+      Border var18 = BorderFactory.createLineBorder(Color.BLACK);
+      var17.setBorder(var18);
+      this.add(var17);
+      int var19 = var4 + var5 * 6 + 120;
+      JButton var20 = new JButton("Cancel");
+      var20.setFont(new Font("Arial", 1, 14));
+      var20.setForeground(Color.RED);
+      var20.setBounds(180, var19, 100, 35);
+      var20.addActionListener((var1x) -> {
+         Confirmation var2 = new Confirmation(this, "Confirm Exit", "This window is asking you to confirm that you want to leave - data you have entered my not be save", "Exit", "Stay on Window", Color.RED, new Color(0, 153, 0));
+         var2.setVisible(true);
+         if (var2.isConfirmActionTaken()) {
+            this.dispose();
+         }
+
+      });
+      this.add(var20);
+      JButton var21 = new JButton("Save Changes");
+      var21.setFont(new Font("Arial", 1, 14));
+      var21.setForeground(new Color(0, 153, 0));
+      var21.setBounds(300, var19, 150, 35);
+      var21.addActionListener((var1x) -> {
+         Confirmation var2 = new Confirmation(this, "Confirm Save", "This window is asking you to confirm that you want to save the changes - data you have entered will be save", "Save Changes", "Go Back", new Color(0, 153, 0), Color.RED);
+         var2.setVisible(true);
+         if (var2.isConfirmActionTaken()) {
+            JOptionPane.showMessageDialog(this, "Changes Saved Successfully!");
+            this.dispose();
+         }
+
+      });
+      this.add(var21);
+      JPanel var22 = new JPanel();
+      var22.setLayout(new BorderLayout());
+      var22.setBounds(0, 570, 600, 30);
+      var22.setBorder(BorderFactory.createMatteBorder(1, 0, 0, 0, Color.BLACK));
+      JLabel var23 = new JLabel(" Status: ESP32 Hub Is Connected");
+      var23.setFont(new Font("Arial", 1, 12));
+      var23.setForeground(new Color(0, 153, 0));
+      var22.add(var23, "Center");
+      this.add(var22);
+      this.setVisible(true);
+   }
+
+   private void addLabel(String var1, int var2, int var3, int var4, int var5) {
+      JLabel var6 = new JLabel(var1);
+      var6.setFont(new Font("Arial", 1, 14));
+      var6.setBounds(var2, var3, var4, var5);
+      this.add(var6);
+   }
+
+   private void setupTextField(JTextField var1, int var2, int var3, int var4, int var5) {
+      var1.setFont(new Font("Arial", 0, 14));
+      var1.setBounds(var2, var3, var4, var5);
+      var1.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+   }
+
+   public static void main(String[] var0) {
+      new EditStructuralDetails();
+   }
+}
