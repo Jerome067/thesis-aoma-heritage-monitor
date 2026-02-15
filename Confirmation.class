@@ -1,0 +1,59 @@
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.Frame;
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+public class Confirmation extends JDialog {
+   private boolean confirmActionTaken = false;
+
+   public Confirmation(Frame var1, String var2, String var3, String var4, String var5, Color var6, Color var7) {
+      super(var1, "AOMA-Heritage Monitor", true);
+      this.setSize(500, 200);
+      this.setLocationRelativeTo(var1);
+      this.setLayout(new BorderLayout());
+      this.setResizable(false);
+      JPanel var8 = new JPanel(new FlowLayout(0));
+      JLabel var9 = new JLabel(var2);
+      var9.setFont(new Font("Arial", 1, 16));
+      var9.setBorder(BorderFactory.createEmptyBorder(15, 20, 0, 0));
+      var8.add(var9);
+      this.add(var8, "North");
+      JLabel var10 = new JLabel("<html><body style='width: 380px'>" + var3 + "</body></html>");
+      var10.setFont(new Font("Arial", 0, 13));
+      var10.setBorder(BorderFactory.createEmptyBorder(10, 30, 10, 20));
+      this.add(var10, "Center");
+      JPanel var11 = new JPanel(new FlowLayout(1, 30, 15));
+      JButton var12 = new JButton(var4);
+      var12.setFont(new Font("Arial", 1, 12));
+      var12.setForeground(var6);
+      var12.setFocusable(false);
+      var12.setPreferredSize(new Dimension(120, 30));
+      var12.addActionListener((var1x) -> {
+         this.confirmActionTaken = true;
+         this.dispose();
+      });
+      JButton var13 = new JButton(var5);
+      var13.setFont(new Font("Arial", 1, 12));
+      var13.setForeground(var7);
+      var13.setFocusable(false);
+      var13.setPreferredSize(new Dimension(130, 30));
+      var13.addActionListener((var1x) -> {
+         this.confirmActionTaken = false;
+         this.dispose();
+      });
+      var11.add(var12);
+      var11.add(var13);
+      this.add(var11, "South");
+   }
+
+   public boolean isConfirmActionTaken() {
+      return this.confirmActionTaken;
+   }
+}
