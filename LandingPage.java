@@ -17,6 +17,8 @@ For Windows
 javac -cp .;jserialcomm-2.11.4.jar LandingPage.java
 java  -cp .;jserialcomm-2.11.4.jar LandingPage
 
+testing fork
+
 */
 
 
